@@ -1,0 +1,50 @@
+nst:
+- id: simple_nstd1
+  name: simple_nstd1
+  SNSSAI-identifier:
+    slice-service-type: eMBB
+  quality-of-service:
+    id: 1
+
+  netslice-subnet:
+  - id: simple_nsd_1
+    is-shared-nss: false
+    description: NetSlice Subnet (service) composed by 1 vnf with 2 cp
+    nsd-ref: simple_nsd
+  - id: simple_nsd_2
+    is-shared-nss: true
+    description: NetSlice Subnet (service) composed by 1 vnf with 3 cp
+    nsd-ref: simple_nsd_middle
+  - id: simple_nsd_3
+    is-shared-nss: false
+    description: NetSlice Subnet (service) composed by 1 vnf with 2 cp
+    nsd-ref: simple_nsd
+
+  netslice-vld:
+  - id: slice_cirros_vld_mgmt
+    name: slice_cirros_vld_mgmt
+    type: ELAN
+    mgmt-network: true
+    nss-connection-point-ref:
+    - nss-ref: simple_nsd_1
+      nsd-connection-point-ref: mgmtnet
+    - nss-ref: simple_nsd_2
+      nsd-connection-point-ref: mgmtnet
+    - nss-ref: simple_nsd_3
+      nsd-connection-point-ref: mgmtnet
+  - id: slice_cirros_vld_data1
+    name: slice_cirros_vld_data1
+    type: ELAN
+    nss-connection-point-ref:
+    - nss-ref: simple_nsd_1
+      nsd-connection-point-ref: datanet
+    - nss-ref: simple_nsd_2
+      nsd-connection-point-ref: datanet1
+  - id: slice_cirros_vld_data2
+    name: slice_cirros_vld_data2
+    type: ELAN
+    nss-connection-point-ref:
+    - nss-ref: simple_nsd_2
+      nsd-connection-point-ref: datanet2
+    - nss-ref: simple_nsd_3
+      nsd-connection-point-ref: datanet

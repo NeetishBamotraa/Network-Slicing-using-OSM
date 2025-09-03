@@ -1,0 +1,35 @@
+nsd:
+  id: simple_nsd_type2_middle
+  name: simple_nsd_type2_middle
+  description: NSD 1 VNF (simple_vnfd_middle)
+  version: '1.0'
+
+  virtual-link-desc:
+  - id: mgmtnet_type2
+    mgmt-network: true
+  - id: datanet_type2
+  - id: datanet2_type2
+
+  vnfd-id:
+  - simple_vnfd_middle_type2
+
+
+  df:
+  - id: default-df
+
+    vnf-profile:
+    - id: '1'
+      virtual-link-connectivity:
+      - constituent-cpd-id:
+        - constituent-base-element-id: '1'
+          constituent-cpd-id: eth0-ext
+        virtual-link-profile-id: mgmtnet_type2
+      - constituent-cpd-id:
+        - constituent-base-element-id: '1'
+          constituent-cpd-id: eth1-ext
+        virtual-link-profile-id: datanet_type2
+      - constituent-cpd-id:
+        - constituent-base-element-id: '1'
+          constituent-cpd-id: eth2-ext
+        virtual-link-profile-id: datanet2_type2
+      vnfd-id: simple_vnfd_middle_type2
