@@ -1,0 +1,30 @@
+nsd:
+  id: simpleN1
+  name: simpleN1
+  description: NSD 1 VNF (simple_vnfd)
+  version: '1.0'
+
+  virtual-link-desc:
+  - id: mgmtnet
+    mgmt-network: true
+  - id: datanet
+
+  vnfd-id:
+  - simple1
+
+
+  df:
+  - id: default-df
+
+    vnf-profile:
+    - id: '1'
+      virtual-link-connectivity:
+      - constituent-cpd-id:
+        - constituent-base-element-id: '1'
+          constituent-cpd-id: eth0-ext
+        virtual-link-profile-id: mgmtnet
+      - constituent-cpd-id:
+        - constituent-base-element-id: '1'
+          constituent-cpd-id: eth1-ext
+        virtual-link-profile-id: datanet
+      vnfd-id: simple1
